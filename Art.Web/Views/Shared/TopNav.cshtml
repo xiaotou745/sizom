@@ -1,0 +1,200 @@
+﻿<div class="wrap clearfix">
+    @*<input id="imageserverurl" type="hidden" value="@Html.GetFullImagePath("")">*@
+    <input id="serverurl" type="hidden" value="/">
+    <div class="f_l logo">
+        <a href="/">
+            <img src="/Images/logo.png" />
+        </a>
+    </div>
+    <ul class="f_l nav">
+        @{string controllername = ViewContext.RouteData.Values["controller"].ToString();
+          string actionname = ViewContext.RouteData.Values["action"].ToString().ToLower();}
+        <li>
+            <a class="@(Html.GetCurrentIndex(controllername, actionname) == 1 ? "checked" : "")" id="indexnav" href="/">首页</a>
+        </li>
+        <li>
+            <a class="@(Html.GetCurrentIndex(controllername, actionname) == 2 ? "checked" : "")" id="artistnav" href="/home/artists/">艺术家</a>
+        </li>
+        <li>
+            <a class="@(Html.GetCurrentIndex(controllername, actionname) == 3 ? "checked" : "")" id="worksnav" href="/home/artworks/">艺术品</a>
+        </li>
+        <li>
+            <a class="@(Html.GetCurrentIndex(controllername, actionname) == 4 ? "checked" : "")" id="newsnav" href="/home/newss/">资讯</a>
+        </li>
+        @*@{
+            ArtProject.Domains.Users u = ArtProject.Services.AccountService.GetCurrentUser();
+
+            if (u != null)
+            {
+                var uname = u.LoginName.Length > 12 ? u.LoginName.Substring(0, 12) + "..." : u.LoginName;
+                long ureadcount = ArtProject.Services.UserService.GetUserMessageUnRead(u.UserId);
+                <li class="w140 posR">
+                    @if (@u.UserType == 1)
+                    {
+                        <a class="@(Html.GetCurrentIndex(controllername, actionname) == 5 ? "checked" : "")" href="/account/usersetting/">@uname</a>
+                        <ul class="none">
+                            <!--普通用户-->
+                            <li><a href="/account/interest/">我的关注</a></li>
+                            <li><a href="/account/collection/">我的收藏</a></li>
+                            <li><a href="/account/messagereceive/">站内信 - @ureadcount 未读</a></li>
+                            <li><a href="/account/usersetting/">设置</a></li>
+                            <li><a href="javascript:do_logout();">退出账户</a></li>
+                        </ul>
+                    }
+                    @if (u.UserType == 2)
+                    {
+                        <a class="@(Html.GetCurrentIndex(controllername, actionname) == 5 ? "checked" : "")"  href="/artistaccount/userprofile/">@uname</a>
+                        <ul>
+                            <!--艺术家中心-->
+                            <li><a href="/artistaccount/userprofile/?mid=1">管理中心</a></li>
+                            <li><a href="/artistaccount/interest/?mid=6">我的关注</a></li>
+                            <li><a href="/artistaccount/fans/?mid=7">我的粉丝</a></li>
+                            <li><a href="/artistaccount/collection/?mid=8">我的收藏</a></li>
+                            <li><a href="/artistaccount/messagereceive/">站内信 - @ureadcount 未读</a></li>
+                            <li><a href="/artistaccount/usersetting/?mid=9">设置</a></li>
+                            <li><a href="javascript:do_logout();">退出账户</a></li>
+                        </ul>
+                    }
+                    @if (u.UserType == 3)
+                    {
+                        <a class="@(Html.GetCurrentIndex(controllername, actionname) == 5 ? "checked" : "")"  href="/adminaccount/usersetting/">@uname</a>
+                        <ul class="none">
+                            <!--普通用户-->
+                            <li><a href="/adminaccount/newss/">新闻管理</a></li>
+                            <li><a href="/adminaccount/topics/">专题管理</a></li>
+                            <li><a href="/adminaccount/usersetting/">设置</a></li>
+                            <li><a href="javascript:do_logout();">退出账户</a></li>
+                        </ul>
+                    }
+                </li>
+            }
+            else
+            {*@
+
+                <li><a id="loginnav" href="javascript:;">登录</a></li>
+                <li>
+                    <a class="@(Html.GetCurrentIndex(controllername, actionname) == 6 ? "checked" : "")"  id="registernav" href="/home/register/">注册</a>
+                </li>
+            @*}
+        }*@
+    </ul>
+    <div class="search f_r">
+        <div class="searchIn inline mg_t10">
+            <input id="keywords" type="text" value="" /><input id="searchbt" type="button" value="搜索" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function pop_login() {
+        pop_up_dialog($(".loginpop"));
+    }
+    $(document).ready(function () {
+        $("#loginnav").click(function () {
+            pop_up_dialog($(".loginpop"));
+        });
+        $("#searchbt").click(function() {
+            if ($("#keywords").val().length <= 0) {
+                $("#keywords").focus();
+                return alert("请输入搜索内容");
+            }
+            window.location = "/search/index/?keywords=" + $("#keywords").val();
+        });
+    });
+    function resisepic(url, width, height) {
+        return $("#imageserverurl").val() + url.substring(0, url.indexOf(".")) + "_" + width + "_" + height + url.substring(url.indexOf("."))
+    }
+    function do_login() {
+        $.ajax({
+            url: '/home/LogOn',
+            type: 'POST',
+            data: { LoginName: $("#LoginName").val(), Password: $("#Password").val(), Remember: $("#Remember").val() },
+            dataType: 'Json',
+            error: function () {
+            },
+            success: function (result) {
+                if (!result.IsError) {
+                    $(".loginpop .pop_close").click();
+                    window.location.reload();
+                } else {
+                    $(".col_FF4C4C").fadeIn(500).fadeOut(3000).text(result.Message)
+                }
+            }
+        });
+    }
+    function do_logout() {
+        $.ajax({
+            url: '/AjaxLogin/LogOff',
+            type: 'POST',
+            dataType: 'Json',
+            error: function () {
+            },
+            success: function (result) {
+                if (!result.IsError) {
+
+                    window.location.reload();
+                } else {
+
+                }
+            }
+        });
+    }
+   
+</script>
+<div class="loginpop pop" style="display: none; width: 800px; height: 470px; top: 20px;
+    left: 50%; margin-left: -400px;">
+    <span class="pop_close"></span>
+    <div class="t_c mg_t40 mg_b20">
+        <img src="/Images/logo.png" />
+        <p class="f16 lineH50 col_333 mg_t10">用户登录</p>
+    </div>
+    <div class="pd_l20 pd_r20">
+        <table cellspacing="0" cellpadding="0" border="0" class="alertTable">
+            <tr>
+                <th width="35%">
+                    &nbsp;
+                </th>
+                <td width="35%">
+                    <span class="col_FF4C4C"></span>
+                </td>
+                <td width="30%">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    邮箱：
+                </th>
+                <td>
+                    <input id="LoginName" type="text" value="" tabindex="10" class="inpCom w250" />
+                </td>
+                <td>
+                    <a href="/home/register">还未注册?</a>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    密码：
+                </th>
+                <td>
+                    <input id="Password" type="password" value="" tabindex="11" class="inpCom w250" />
+                </td>
+                <td>
+                    <a href="/home/findpwd">忘记密码？</a>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                </th>
+                <td>
+                    <label>
+                        <input id="Remember" type="checkbox" tabindex="12" />两周内自动登录
+                    </label>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <div class="pd40 t_c">
+            <a class="btnCom h40 btnBg3 w140 inline" tabindex="13" id="loginsubmit" href="javascript:do_login();">登 录</a>
+        </div>
+    </div>
+</div>

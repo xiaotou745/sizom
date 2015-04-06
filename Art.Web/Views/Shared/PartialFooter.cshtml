@@ -1,0 +1,61 @@
+﻿<div class="pop_about_us pop" style=" display:none; width: 800px; height: 470px; top: 20px; left: 50%;
+    margin-left: -400px;">
+    <span class="pop_close"></span>
+    <div class="t_c mg_t40 mg_b20">
+         <img src="@Html.GetSiteSetting().Logo" />
+        <p class="f18 lineH50 col_333 mg_t10">
+            关于我们</p>
+    </div>
+    <div class="pd_l20 pd_r20 pd_t40">
+        <p class="lineH35 f14 t_c col_666">
+            sizom.com (西站艺术) 致力于为艺术家提供一个优质的展示、传播、交流的互联网平台<br />
+            我们专注于艺术领域与消费互联网，打造一个最值得艺术家、收藏家、画廊与消费者信赖的平台<br />
+            我们的团队成员热爱艺术，在互联网深耕多年，来自草根确心怀理想<br />
+            诚邀热爱艺术的朋友光临和加入
+        </p>
+    </div>
+</div>
+<div class="pop_contact_us pop" style="display:none;width: 800px; height: 470px; top: 20px; left: 50%;
+    margin-left: -400px;">
+    <span class="pop_close"></span>
+    <div class="t_c mg_t40 mg_b20">
+        <img src="@Html.GetSiteSetting().Logo" />
+        <p class="f18 lineH50 col_333 mg_t10">
+            联系我们</p>
+    </div>
+    <div class="pd_l20 pd_r20 pd_t40">
+        <p class="lineH40 f14 t_c">
+            邮箱 / Email ：<span class="col_333">@Html.GetSiteSetting().Email</span><br />
+            电话 / Phone ：<span class="col_333">@Html.GetSiteSetting().Tel</span><br />
+            传真 / Fax ：<span class="col_333">@Html.GetSiteSetting().Fax</span>
+        </p>
+    </div>
+</div>
+<div class="footer">
+    <div class="wrap">
+        <div class="f_l">
+            <a href="###" class="about_us inline mg_r10 col1 udLine">关于我们</a> | <a href="###" class="contact_us inline mg_r10 mg_l10 col1 udLine">
+                联系我们</a> @*| <a href="###" class="inline mg_l10 col1 udLine">加入我们</a>*@
+            <p>
+                Copyright © 2014 西站网 ( @Html.GetSiteSetting().IcpNo ) <a href="/home/contract" class="inline mg_l10 mg_r10 col2 udLine">
+                    使用条款</a> | <a href="/home/privatepolicy" class="inline mg_l10 col2 udLine">
+                        客户隐私条款</a></p>
+        </div>
+        <div class="f_r mg_t40">
+            关注我们 / Follow US <i class="FacebookIocn icon30 inline mg_r10 mg_l20"></i><i class="TwitterIcon icon30 inline mg_r10">
+            </i><i class="weiboIcon icon30 inline mg_r10"></i>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".contact_us").click(function () {
+            pop_up_dialog($(".pop_contact_us"))
+        });
+        $(".about_us").click(function () {
+            pop_up_dialog($(".pop_about_us"))
+        });
+    });
+    
+</script>

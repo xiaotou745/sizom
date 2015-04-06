@@ -1,0 +1,159 @@
+﻿@*@using DZ.Helper*@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+@Html.Partial("Header")
+<style type="text/css">
+    #container {
+        width: 100%;
+        margin: 0px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #slides {
+        display: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+        #slides .slidesContainer {
+            background: #fff;
+            border: 0px solid #fff;
+            box-shadow: 0 2.5px 5px rgba(0,0,0,.1);
+            overflow: hidden;
+        }
+
+        #slides .slidesNext, #slides .slidesPrevious {
+            position: relative;
+            top: -200px;
+            left: 40px;
+            width: 24px;
+            height: 0;
+            padding-top: 32px;
+            display: none;
+            z-index: 50;
+            overflow: hidden;
+            background: url(../images/navigation-previous.png) no-repeat 0 0;
+        }
+
+        #slides .slidesNext {
+            left: 628px;
+            background: url(../images/navigation-next.png) no-repeat 0 0;
+        }
+
+    .slidesPagination {
+        position: absolute;
+        top: 472px;
+        left: 50%;
+        width: 200px;
+        height: 8px;
+        margin-left: -100px;
+        text-align: center;
+        font-size: 0;
+        z-index: 50;
+    }
+
+        .slidesPagination li {
+            float: left;
+            margin: 0 1px;
+            list-style: none;
+        }
+
+            .slidesPagination li a {
+                display: block;
+                width: 8px;
+                height: 0;
+                padding-top: 8px;
+                margin: 0 5px 0 4px;
+                cursor: pointer;
+                background-color: #cdcdcd;
+                border-radius: 4px;
+                background-position: 0 0;
+            }
+
+            .slidesPagination li.slidesCurrent a {
+                background-color: #000;
+            }
+
+    .current_slide {
+        font: bold 10px/1.33 sans-serif;
+        float: left;
+        margin-top: 12px;
+    }
+
+    .controls {
+        display: block;
+        margin-top: 12px;
+        float: left;
+        color: #333;
+        font: bold 10px/1.33 sans-serif;
+        margin-right: 10px;
+    }
+</style>
+<body>
+    <div class="header posR">
+        <div class="bgAutoL">
+            <div class="halfWInL">
+                <div class="bg32 h50">
+                </div>
+            </div>
+        </div>
+        <div class="bgAutoR">
+            <div class="halfWInR">
+                <div class="bg32 h50">
+                </div>
+            </div>
+        </div>
+        <div class="top zI100">
+            @Html.Partial("TopNav")
+        </div>
+        <div class="container">
+            <div id="slides">
+                @*@{IList<ArtProject.Domains.Topic> tlist = Html.GetTopicBanner();
+
+                if (tlist != null && tlist.Count > 0)
+                {
+                    foreach (var t in tlist)
+                    {
+                        <a href="@t.TopicUrl" target="_blank">
+                            <img imgurl="@UploadHelper.GetImageWebPath(t.PicUrl)" src="" alt="" />
+                        </a>
+                    }
+                }
+                }*@
+            </div>
+            <p class="current_slide">
+            </p>
+        </div>
+    </div>
+    @RenderBody()
+    @Html.Partial("PartialFooter")
+    <script>
+        loadslide(true);
+        function loadslide(isnew) {
+
+            $("#slides").find('img').each(function () {
+                $(this).attr("src", "/image/scale?imgurl=" + $(this).attr("imgurl") + "&w=" + $(window).width() + "&h=500");
+            });
+            if (isnew) {
+                $("#slides").slides({
+                    preload: true,
+                    //preloadImage: 'img/loading.gif',
+                    play: 5000,
+                    pause: 2500,
+                    height: 500,
+                    width: $(window).width(),
+                    hoverPause: true,
+                    pagination: true
+                });
+                $("#slides").slides("play").show();
+            }
+        }
+
+        $(window).resize(function () {
+            loadslide(false);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+2015-04-06 11:11:32,776 [1] DEBUG Spring.Context.Support.ContextHandler - creating context 'spring.root'
+2015-04-06 11:11:32,819 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Refreshing object factory 
+2015-04-06 11:11:32,830 [1] DEBUG Spring.Objects.Factory.Xml.XmlObjectDefinitionReader - Loading XML object definitions from config [D:\wangyc\code\sizomgit\Art.Web\web.config#spring/objects]
+2015-04-06 11:11:32,839 [1] DEBUG Spring.Objects.Factory.Xml.XmlObjectDefinitionReader - Using the following XmlReader implementation : System.Xml.XsdValidatingReader
+2015-04-06 11:11:32,843 [1] DEBUG Spring.Objects.Factory.Xml.DefaultObjectDefinitionDocumentReader - Loading object definitions.
+2015-04-06 11:11:32,845 [1] DEBUG Spring.Objects.Factory.Xml.ObjectDefinitionParserHelper - Loading object definitions...
+2015-04-06 11:11:32,846 [1] DEBUG Spring.Objects.Factory.Xml.ObjectDefinitionParserHelper - Default lazy init 'false'.
+2015-04-06 11:11:32,847 [1] DEBUG Spring.Objects.Factory.Xml.ObjectDefinitionParserHelper - Default dependency check 'none'.
+2015-04-06 11:11:32,847 [1] DEBUG Spring.Objects.Factory.Xml.ObjectDefinitionParserHelper - Default autowire 'no'.
+2015-04-06 11:11:32,848 [1] DEBUG Spring.Objects.Factory.Xml.ObjectDefinitionParserHelper - Default merge 'false'.
+2015-04-06 11:11:32,851 [1] DEBUG Spring.Objects.Factory.Xml.DefaultObjectDefinitionDocumentReader - Found 0 <object> elements defining objects.
+2015-04-06 11:11:32,852 [1] DEBUG Spring.Objects.Factory.Xml.XmlObjectDefinitionReader - Loaded 0 object definitions from location [config://spring/objects]
+2015-04-06 11:11:32,853 [1] DEBUG Spring.Context.Support.XmlApplicationContext - Refreshed ObjectFactory for application context 'spring.root'.
+2015-04-06 11:11:32,854 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 11:11:32,854 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Registering well-known processors and objects
+2015-04-06 11:11:32,856 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 11:11:32,857 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Custom post processing object factory
+2015-04-06 11:11:32,857 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Post processing object factory using pre-registered processors
+2015-04-06 11:11:32,857 [1] DEBUG Spring.Context.Support.XmlApplicationContext - No objects defined in application context [spring.root].
+2015-04-06 11:11:32,858 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Post processing object factory using defined processors
+2015-04-06 11:11:32,893 [1] DEBUG Spring.Context.Support.XmlApplicationContext - processed 0 IFactoryObjectPostProcessors defined in application context [spring.root].
+2015-04-06 11:11:32,895 [1] DEBUG Spring.Context.Support.XmlApplicationContext - processed 0 IObjectPostProcessors defined in application context [spring.root].
+2015-04-06 11:11:32,899 [1] DEBUG Spring.Context.Support.XmlApplicationContext - No IEventRegistry found with name 'eventRegistry' : using default 'Spring.Objects.Events.Support.EventRegistry'.
+2015-04-06 11:11:32,902 [1] DEBUG Spring.Context.Support.XmlApplicationContext - No IMessageSource found with name 'messageSource' : using default 'StaticMessageSource : '.
+2015-04-06 11:11:32,903 [1] DEBUG Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Preinstantiating singletons
+2015-04-06 11:11:32,904 [1] DEBUG Spring.Objects.Factory.Support.DefaultListableObjectFactory - Pre-instantiating singletons in factory [Spring.Objects.Factory.Support.DefaultListableObjectFactory]
+2015-04-06 11:11:32,905 [1] DEBUG Spring.Context.Support.XmlApplicationContext - Publishing event in context [spring.root] : ContextRefreshedEventArgs [Refreshed]
+2015-04-06 11:11:32,906 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed
+2015-04-06 11:11:33,030 [1] DEBUG Spring.Context.Support.ContextRegistry - Registering context 'Spring.Context.Support.XmlApplicationContext' under name 'spring.root'.
+2015-04-06 11:11:33,033 [1] DEBUG Spring.Context.Support.ContextHandler - context 'Spring.Context.Support.XmlApplicationContext' created for name 'spring.root'
+2015-04-06 11:11:33,034 [1] DEBUG Spring.Context.Support.ContextRegistry - Returning context 'Spring.Context.Support.XmlApplicationContext' registered under name 'spring.root'.
+2015-04-06 18:01:30,723 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 18:01:30,773 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 18:01:30,784 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed
+2015-04-06 18:05:46,698 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 18:05:46,713 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 18:05:46,724 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed
+2015-04-06 18:47:26,167 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 18:47:26,183 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 18:47:26,194 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed
+2015-04-06 19:03:58,873 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 19:03:58,887 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 19:03:58,898 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed
+2015-04-06 20:30:18,881 [1] INFO  Spring.Context.Support.XmlApplicationContext - after RefreshObjectFactory count:0
+2015-04-06 20:30:18,894 [1] INFO  Spring.Context.Support.XmlApplicationContext - after PrepareObjectFactory count:0
+2015-04-06 20:30:18,904 [1] INFO  Spring.Context.Support.XmlApplicationContext - ApplicationContext Refresh: Completed

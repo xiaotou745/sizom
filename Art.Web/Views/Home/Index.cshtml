@@ -1,0 +1,228 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Art.Web.Models.IndexModel
+<div class="wrap mg_t30">
+    <h3 class="titleIdx">
+        <a href="/home/artworks" class="f_r more">查看更多艺术品 ></a> <span class="span20">
+            <em>热门艺术品</em>
+            /
+        </span><i>Popular art</i>
+    </h3>
+    <div class="clearfix bdB mg_t30">
+        @if (Model.HotWorks != null)
+        {
+            foreach (var w in Model.HotWorks)
+            {
+                var ulmgr = "mg_r40";
+                if ((Model.HotWorks.IndexOf(w) + 1) % 4 == 0)
+                {
+                    ulmgr = "";
+                }
+                <ul class="ulList w260 pd_b40 @ulmgr">
+                    <li class="mg_b15">
+                        <a target="_blank" href="/Artist/ArtWorksDetail/@w.WorksId">
+                            <img width="260px" height="260px" src="@w.PicUrl" />
+                        </a>
+                    </li>
+                    <li class="f14 col_333">@w.UserName</li>
+                    <li><i>@w.WorksName（@w.WorksTypeName），@w.FinishTime.ToString("yyyy-MM-dd")</i></li>
+                </ul>
+            }
+        }
+    </div>
+</div>
+<div class="wrap mg_t30">
+    <h3 class="titleIdx">
+        <a href="/home/News" class="f_r more">查看更多资讯 ></a>
+        <span class="span20"><em>资讯</em>/ </span><i>News</i>
+    </h3>
+    <div class="clearfix bdB mg_t30">
+        @if (Model.NewsLasted != null && Model.NewsLasted.Count > 0)
+        {
+            <ul class="ulList w440 pd_b40">
+                <li class="mg_b15">
+                    <a href="/home/NewsDetail/@Model.NewsLasted[0].NewsId">
+                        <img width="440" height="380" src="@Model.NewsLasted[0].PicUrl" />
+                    </a>
+                </li>
+                <li class="f18 col_333">@Model.NewsLasted[0].NewsTitle</li>
+                <li>
+                    <span class="@Model.NewsLasted[0].NewsType.TypeClassName mg_r10">@Model.NewsLasted[0].NewsType.TypeName</span>
+                    @Model.NewsLasted[0].Source
+                    · @Model.NewsLasted[0].CreateTime.ToString("yyyy-MM-dd")
+                </li>
+            </ul>
+        }
+        <div class="f_r w680">
+            @if (Model.NewsLasted != null && Model.NewsLasted.Count > 1)
+            {
+
+                Model.NewsLasted.RemoveAt(0);
+                foreach (var w in Model.NewsLasted)
+                {
+                    var ulmgr = "mg_r40";
+                    if ((Model.NewsLasted.IndexOf(w) + 1) % 3 == 0)
+                    {
+                        ulmgr = "";
+                    }
+                    <ul class="ulList w200 pd_b40 @ulmgr">
+                        <li class="mg_b15">
+                            <a href="/home/NewsDetail/@w.NewsId">
+                                <img width="200px" height="133px" src="@w.PicUrl" />
+                            </a>
+                        </li>
+                        <li class="f14 col_333">@w.NewsTitle</li>
+                        <li>
+                            <span class="@w.NewsType.TypeClassName mg_r10">@w.NewsType.TypeName</span>
+                            @w.CreateTime.ToString("yyyy-MM-dd")
+                        </li>
+                    </ul>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="wrap mg_t30">
+    <h3 class="titleIdx">
+        <a href="#" class="f_r more">查看更多专题 ></a> <span class="span20"><em>专题</em> / </span>
+        <i>Special topic</i>
+    </h3>
+    <div class="clearfix bdB mg_t30">
+        @if (Model.TopicLasted != null && Model.TopicLasted.Count > 1)
+        {
+            foreach (var w in Model.TopicLasted)
+            {
+                var ulmgr = "mg_r40";
+                if ((Model.TopicLasted.IndexOf(w) + 1) % 3 == 0)
+                {
+                    ulmgr = "";
+                }
+                <ul class="ulList w360 pd_b40 @ulmgr">
+                    <li class="mg_b15">
+                        <a href="#">
+                            <img src="@w.PicUrl" />
+                        </a>
+                    </li>
+                </ul>
+            }
+        }
+
+    </div>
+</div>
+<div class="wrap mg_t30">
+    <h3 class="titleIdx">
+        <a href="/home/artists" class="f_r more">更多艺术家 ></a> <span class="span20">
+            <em>热门艺术家</em>
+            /
+        </span><i>Featured Artists</i>
+    </h3>
+    <div class="clearfix bdB mg_t30">
+        @if (Model.HotArtists != null && Model.HotArtists.Count > 0)
+        {
+            foreach (var w in Model.HotArtists)
+            {
+                var ulmgr = "mg_r40";
+                if ((Model.HotArtists.IndexOf(w) + 1) % 4 == 0)
+                {
+                    ulmgr = "";
+                }
+                <ul class="ulList w260 pd_b40 @ulmgr">
+                    <li class="mg_b15">
+                        <a href="/artist/artworks/@w.UserId">
+                            <img width="260px" height="260px" src="@w.PicUrl" />
+                        </a>
+                    </li>
+                    <li class="f14 col_333">@w.TrueName</li>
+                    <li>@w.ArtTypeName，@w.LocationInfo.LocationName</li>
+                    <input class="userpic" type="hidden" value="@w.PicUrl" style="display:none" />
+                    @if (w.DefaultWork != null)
+                    {
+                        <input class="userworkspic" type="hidden" value="@w.DefaultWork.PicUrl" style="display:none" />
+                    }
+                </ul>
+            }
+        }
+    </div>
+</div>
+<div class="wrap mg_t30">
+    <h3 class="titleIdx">
+        <span class="span20"><em>最新入驻艺术家</em> / </span><i>Latest settled</i>
+    </h3>
+    <div class="clearfix bdB mg_t30">
+        @if (Model.RecentRegistedArtists != null && Model.RecentRegistedArtists.Count > 0)
+        {
+            foreach (var w in Model.RecentRegistedArtists)
+            {
+                var ulmgr = "mg_r40";
+                if ((Model.RecentRegistedArtists.IndexOf(w) + 1) % 6 == 0)
+                {
+                    ulmgr = "";
+                }
+                <ul class="ulList w160 pd_b40 @ulmgr">
+                    <li class="mg_b15">
+                        <a href="/artist/artworks/@w.UserId">
+                            <img width="160" src="@w.PicUrl" />
+                        </a>
+                    </li>
+                    <li class="f14 col_333">@w.TrueName</li>
+                    <li>@w.ArtTypeName，@w.LocationInfo.LocationName</li>
+                    <input class="userpic" type="hidden" value="@w.PicUrl" style="display:none" />
+                    @if (w.DefaultWork != null)
+                    {
+                        <input class="userworkspic" type="hidden" value="@w.DefaultWork.PicUrl" style="display:none" />
+                    }
+                </ul>
+            }
+        }
+    </div>
+</div>
+<div class="wrap">
+    <ul class="appBox">
+        <li class="bdR">
+            <div class="pd_t30 pd_b30 lineH25">
+                <i class="qrCode inline"></i>
+                <p class="inline mg_l20">
+                    <span class="f18 col_333">扫描二维码</span><br />
+                    <span class="col_333">关注我们的微信公众号“西站”</span><br />
+                    或者您也可以在微信平台里搜索“西站网”
+                </p>
+            </div>
+        </li>
+        <li class="bdR">
+            <div class="pd_t20 pd_b20">
+                <i class="appBIcon inline"></i>
+                <p class="inline mg_l20">
+                    <span class="f18 col_333 inline lineH50">订制艺术家移动端应用</span><br />
+                    <span class="inline mg_t10">
+                        <i class="appAIcon inline mg_r15"></i><i class="appIIcon inline mg_r15">
+                        </i><a href="#" class="btnCom btnBg2 w120 inline">我要申请</a>
+                    </span>
+                </p>
+            </div>
+        </li>
+        <li class="orderUsBg">
+            <div class="pd_t30 pd_b30 t_r">
+                <p class="inline col_333 lineH50">
+                    <span class="f18">订阅我们</span> &nbsp;&nbsp; 我们会将最新相关资讯及信息发送给您
+                </p>
+                <div class="orderUsForm inline">
+                    <input type="text" class="" value="" /><a href="#" class="btnCom btnBg1 w120 inline vTop">订阅邮件</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $(".ulList").hover(function () {
+
+            if ($(this).find(".userworkspic").val() && $(this).find(".userworkspic").val().length > 5)
+                $(this).find('img').attr("src", $(this).find(".userworkspic").val())
+        }, function () {
+            $(this).find('img').attr("src", $(this).find(".userpic").val())
+        });
+    })
+</script>
