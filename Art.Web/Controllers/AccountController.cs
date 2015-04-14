@@ -107,7 +107,7 @@ namespace Art.Web.Controllers
                 int userId = UsersService.Create(userDto);
                 userDto.UserId = userId;
 
-                MailSender.SendRegisterMail(userDto.LoginName, userDto.UserId, userDto.TrueName);
+                //MailSender.SendRegisterMail(userDto.LoginName, userDto.UserId, userDto.TrueName);
                 return Content(AjaxResult.Success(userDto.UserId, "注册成功").ToString());
             }
             return Content(AjaxResult.Error("验证失败").ToString());

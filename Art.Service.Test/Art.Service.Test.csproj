@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>..\Libs\Common.Logging.dll</HintPath>
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging.Log4Net">
       <HintPath>..\Libs\Common.Logging.Log4Net.dll</HintPath>
@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\achuan.lib\net\net.libs\AC.Core\AC.Core.csproj">
